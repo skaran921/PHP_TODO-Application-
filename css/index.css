@@ -1,0 +1,39 @@
+.uk-card.uk-card-default.uk-card-body.secondHalf {
+  background: #9a71ff;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #fafafa;
+}
+
+.greyText {
+  color: #b9b9b9;
+}
+
+.lightGreyText {
+  color: #e1e1e1;
+}
+
+.boldText {
+  font-weight: 600;
+}
+
+.normalHeadingText {
+  font-size: 1em;
+}
+
+.bottomMessage {
+  background: rgba(0, 0, 0, 0.1);
+  color: #fff;
+  padding: 7px;
+  border-radius: 30px;
+  font-size: 1.7em;
+}
+
+img.bottomLogo {
+  transition: ease-in-out;
+  transition-duration: 10s;
+  transform: rotate3d(1, 1, 1, 360deg);
+}
