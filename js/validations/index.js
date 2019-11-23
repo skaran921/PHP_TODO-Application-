@@ -12,6 +12,7 @@ function validateLogin() {
     $("#errorMessage").text("Email is not valid");
     $("#loginAlertBox").show();
   } else {
+    checkAuthentication(email, password);
     $("#loginAlertBox").hide();
   }
 }
@@ -38,7 +39,7 @@ function createUserValidation() {
   let lastName = $("#lastName").val();
   let email = $("#emailForNewUser").val();
   let password = $("#passwordForNewUser").val();
-
+  $("#createAccountAlertBoxForSuccess").hide();
   if (firstName.trim().length == 0) {
     $("#createAccountAlertText").text("First Name is required");
     $("#createAccountAlertBox").show();
@@ -98,11 +99,72 @@ function createUserValidation() {
     $("#createAccountAlertBox").show();
   } else if (password.length < 8) {
     $("#createAccountAlertText").text(
-      "Password must have at lest six characters"
+      "Password must have at least eight characters"
     );
     $("#createAccountAlertBox").show();
   } else {
+    createNewUserAccount(firstName, lastName, email, password);
     $("#createAccountAlertBox").hide();
   }
 }
 // ********************createUserValidation*****************************
+
+// ******************************************createNewUserAccount*********************************
+function createNewUserAccount(firstName, lastName, email, password) {
+  let url = "./api/create_account.php";
+  $.post(
+    url,
+    {
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      password: password
+    },
+    data => {
+      jsonParseData = JSON.parse(data);
+      if (jsonParseData.result == "Success") {
+        $("#createAccountAlertBox").hide();
+        $("#createAccountAlertTextForSuccess").text(
+          "Account has been created."
+        );
+        $("#createAccountAlertBoxForSuccess").show();
+
+        $("#firstName").val("");
+        $("#lastName").val("");
+        $("#emailForNewUser").val("");
+        $("#passwordForNewUser").val("");
+      } else {
+        $("#createAccountAlertBoxForSuccess").hide();
+        $("#createAccountAlertText").text(`${jsonParseData.result}`);
+        $("#createAccountAlertBox").show();
+      }
+    }
+  );
+}
+// ******************************************createNewUserAccount end*********************************
+
+// ******************************************checkAuthentication*********************************
+function checkAuthentication(email, password) {
+  let url = "./api/login.php";
+  $.post(
+    url,
+    {
+      email: email,
+      password: password
+    },
+    data => {
+      jsonData = JSON.parse(data);
+
+      if (jsonData.result == "Success") {
+        $("#loginAlertBox").hide();
+        $("#loginAlertBoxTextForSuccess").text(`${jsonData.result}`);
+        $("#loginAlertBoxForSuccess").show();
+      } else {
+        $("#loginAlertBoxForSuccess").hide();
+        $("#errorMessage").text(`${jsonData.result}`);
+        $("#loginAlertBox").show();
+      }
+    }
+  );
+}
+// ******************************************checkAuthentication end*********************************
