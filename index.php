@@ -31,6 +31,12 @@
                     <form>
                         <fieldset class="uk-fieldset">
                             <legend class="uk-legend">Login</legend>
+                            <!-- ********************** alertBoxSuccess ************************-->
+                            <div class="uk-alert-success" id="loginAlertBoxForSuccess" uk-alert style="display:none;">
+
+                                <p id="loginAlertBoxTextForSuccess"></p>
+                            </div>
+                            <!-- ********************** alertBoxSuccess ************************-->
                             <!-- ********************** alertBox ************************-->
                             <div class="uk-alert-warning" id="loginAlertBox" uk-alert style="display:none;">
 
@@ -165,12 +171,19 @@
                 <center>
                     <form action="">
 
-                        <!-- ********************** alertBox ************************-->
+                        <!-- ********************** alertBoxSuccess ************************-->
+                        <div class="uk-alert-success" id="createAccountAlertBoxForSuccess" uk-alert style="display:none;">
+
+                            <p id="createAccountAlertTextForSuccess"></p>
+                        </div>
+                        <!-- ********************** alertBoxSuccess ************************-->
+
+                        <!-- ********************** alertBoxDanger ************************-->
                         <div class="uk-alert-warning" id="createAccountAlertBox" uk-alert style="display:none;">
 
                             <p id="createAccountAlertText"></p>
                         </div>
-                        <!-- ********************** alertBox ************************-->
+                        <!-- ********************** alertBoxDanger ************************-->
                         <!-- first Name input box -->
                         <div class="uk-margin">
                             <div class="uk-inline">
