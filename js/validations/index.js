@@ -159,6 +159,7 @@ function checkAuthentication(email, password) {
         $("#loginAlertBox").hide();
         $("#loginAlertBoxTextForSuccess").text(`${jsonData.result}`);
         $("#loginAlertBoxForSuccess").show();
+        window.open("./dashboard/index.php", "_self");
       } else {
         $("#loginAlertBoxForSuccess").hide();
         $("#errorMessage").text(`${jsonData.result}`);
